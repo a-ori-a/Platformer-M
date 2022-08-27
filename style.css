@@ -1,0 +1,24 @@
+body {
+  -webkit-user-select:none;
+  padding: 0px;
+  margin: 0px;
+}
+
+h1 {
+  height:30px;
+}
+
+canvas {
+  background-color: black;
+  width: 100%;
+  float: left;
+}
+
+div {
+  width: 50%;
+  background-color: aqua;
+  height: 40px;
+  text-align: center;
+  font-size: 25px;
+  position: absolute;
+}
