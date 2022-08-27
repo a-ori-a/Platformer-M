@@ -12,9 +12,11 @@ var fuck = false;
 canvas.addEventListener('touchstart', click);
 canvas.addEventListener('touchend', clickend);
 document.getElementById("pausebtn").addEventListener("click", pause);
+document.addEventListener('keydown', click);
+document.addEventListener('keyup', clickend);
 
 function initial() {
-  objs = [[180,100,200,0,-0.2]];
+  objs = [[180,100,80,0,-0.2],[280,Math.random()*100+50,80,0,-0.2],[380,Math.random()*100+50,80,0,-0.2]];
   player = [100,-100];
   touch = false;
   g = 0;
@@ -54,7 +56,7 @@ function checkbox() {
     if (i[0] > 110) {
       break;
     } else {
-      if ( ( (player[1] < i[1] && i[1] < player[1]+g) || (8.5 < i[1]-player[1] && i[1]-player[1] < 10.5) ) && i[0]+i[2] > 100 && g >= 0) {
+      if ( ( (player[1] < i[1] && i[1] < player[1]+g) || (9.5 < i[1]-player[1] && i[1]-player[1] < 10.2) ) && i[0]+i[2] > 100 && g >= 0) {
         player[1] = i[1]-10;
         if (energy < 100) {
           energy += 2;
@@ -156,9 +158,10 @@ function draw() {
     c.font = "40px helvetica";
     c.fillStyle = "yellow";
     c.textAlign = "center";
-    c.fillText("GAME OVER",250, 100)
+    c.fillText("GAME OVER",250, 100);
+    c.fillText("Score :"+score, 250,150)
     c.font = "20px helvetica";
-    c.fillText("Tap to play again",250,150);
+    c.fillText("Tap to play again",250,180);
     var now = new Date;
     if (now.getTime() - lastDeathTime > 500 && touch) {
       initial();
