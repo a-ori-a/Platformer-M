@@ -15,10 +15,12 @@ canvas {
 }
 
 div {
-  width: 50%;
-  background-color: aqua;
+  color: white;
   height: 40px;
+  width: 40px;
   text-align: center;
-  font-size: 25px;
+  font-size: 35px;
   position: absolute;
+  top: 80px;
+  right:20px;
 }

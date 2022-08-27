@@ -14,8 +14,8 @@ canvas.addEventListener('touchend', clickend);
 document.getElementById("pausebtn").addEventListener("click", pause);
 
 function initial() {
-  objs = [[100,100,300,0,-0.2]];
-  player = [100,80];
+  objs = [[180,100,200,0,-0.2]];
+  player = [100,-100];
   touch = false;
   g = 0;
   energy = 100;
@@ -41,10 +41,10 @@ function clickend() {
 function pause() {
   var btn = document.getElementById("pausebtn")
   if (fuck) {
-    btn.innerHTML = "If you want to pause this game, you may wish to click this button";
+    btn.innerHTML = "⎋";
     fuck = false;
   } else {
-    btn.innerHTML = "If you want to continue this game, you may wish to click this button";
+    btn.innerHTML = "⎋";
     fuck = true;
   }
 }
@@ -54,7 +54,7 @@ function checkbox() {
     if (i[0] > 110) {
       break;
     } else {
-      if ( ( (player[1] < i[1] && i[1] < player[1]+g) || (9.5 < i[1]-player[1] && i[1]-player[1] < 10.5) ) && i[0]+i[2] > 100 && g >= 0) {
+      if ( ( (player[1] < i[1] && i[1] < player[1]+g) || (8.5 < i[1]-player[1] && i[1]-player[1] < 10.5) ) && i[0]+i[2] > 100 && g >= 0) {
         player[1] = i[1]-10;
         if (energy < 100) {
           energy += 2;
@@ -118,11 +118,11 @@ function draw() {
   if (scene == "start") {
     c.fillStyle = "navy";
     c.fillRect(0,0,500,200);
-    c.font = "40px serif";
+    c.font = "40px helvetica";
     c.fillStyle = "yellow";
     c.textAlign = "center";
     c.fillText("Platformer - M", 250,100);
-    c.font = "20px serif";
+    c.font = "20px helvetica";
     c.fillText("Tap to play", 350,150);
     if (touch) {
       initial();
@@ -143,18 +143,21 @@ function draw() {
     c.fillRect(player[0],player[1],10,10);
     c.fillStyle = "red";
     c.fillRect(5,193,energy/100*490,5);
-    c.font = "18px serif";
+    c.font = "18px helvetica";
     c.tetAlign = "left";
     c.fillStyle = "yellow";
     c.fillText("SCORE : "+score, 80,20)
+    if (fuck) {
+      c.fillText("PAUSED",250,100);
+    }
   } else if (scene == "game over") {
     c.fillStyle = "rgba(255,255,255, 0.01)";
     c.fillRect(0,0,500,201)
-    c.font = "40px serif";
+    c.font = "40px helvetica";
     c.fillStyle = "yellow";
     c.textAlign = "center";
     c.fillText("GAME OVER",250, 100)
-    c.font = "20px serif";
+    c.font = "20px helvetica";
     c.fillText("Tap to play again",250,150);
     var now = new Date;
     if (now.getTime() - lastDeathTime > 500 && touch) {
